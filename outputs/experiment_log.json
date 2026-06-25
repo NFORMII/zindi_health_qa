@@ -1,0 +1,95 @@
+[
+  {
+    "experiment": "exp09_more_beams",
+    "model": "mt5-small (Exp3 checkpoint)",
+    "lora_r": 16,
+    "epochs": "N/A",
+    "lr": "N/A",
+    "batch": "N/A",
+    "prompt": "with_lang_tag",
+    "num_beams": 8,
+    "length_penalty": 1.0,
+    "val_rouge1": 0.0006,
+    "val_rougeL": 0.0006,
+    "leaderboard_score": "TBD",
+    "notes": "Inference only \u2014 num_beams=8, reuses Exp3 checkpoint"
+  },
+  {
+    "experiment": "exp10_length_penalty",
+    "model": "mt5-small (Exp3 checkpoint)",
+    "lora_r": 16,
+    "epochs": "N/A",
+    "lr": "N/A",
+    "batch": "N/A",
+    "prompt": "with_lang_tag",
+    "num_beams": 4,
+    "length_penalty": 1.5,
+    "val_rouge1": 0.0011,
+    "val_rougeL": 0.0011,
+    "leaderboard_score": "TBD",
+    "notes": "Inference only \u2014 length_penalty=1.5 encourages complete answers"
+  },
+  {
+    "experiment": "exp01_tfidf_perlang",
+    "method": "TF-IDF retrieval, per-language models",
+    "feature": "char_wb ngrams 3-5",
+    "grouping": "per_language",
+    "val_rouge1": 0.4212,
+    "val_rougeL": 0.366,
+    "leaderboard_score": "TBD",
+    "notes": "Anchor score \u2014 per-language retrieval baseline"
+  },
+  {
+    "experiment": "exp02_tfidf_global",
+    "method": "TF-IDF retrieval, single global model",
+    "feature": "char_wb ngrams 3-5",
+    "grouping": "global",
+    "val_rouge1": 0.4281,
+    "val_rougeL": 0.3744,
+    "leaderboard_score": "TBD",
+    "notes": "Tests whether per-language grouping (Exp1) actually helps"
+  },
+  {
+    "experiment": "exp03_tfidf_word",
+    "method": "TF-IDF retrieval, word unigrams+bigrams",
+    "feature": "word ngrams 1-2",
+    "grouping": "per_language",
+    "val_rouge1": 0.3927,
+    "val_rougeL": 0.336,
+    "leaderboard_score": "TBD",
+    "notes": "Word-level features vs character n-grams (Exp1)"
+  },
+  {
+    "experiment": "exp04_zeroshot_langtag",
+    "model": "google/mt5-small",
+    "num_beams": 4,
+    "length_penalty": 1.0,
+    "use_lang_tag": true,
+    "val_rouge1": 0.0009,
+    "val_rougeL": 0.0009,
+    "leaderboard_score": "TBD",
+    "notes": "Zero-shot baseline with language tag in prompt"
+  },
+  {
+    "experiment": "exp05_zeroshot_nolang",
+    "model": "google/mt5-small",
+    "num_beams": 4,
+    "length_penalty": 1.0,
+    "use_lang_tag": false,
+    "val_rouge1": 0.0014,
+    "val_rougeL": 0.0014,
+    "leaderboard_score": "TBD",
+    "notes": "Ablation: no language tag in prompt"
+  },
+  {
+    "experiment": "exp06_zeroshot_beams8_lp15",
+    "model": "google/mt5-small",
+    "num_beams": 8,
+    "length_penalty": 1.5,
+    "use_lang_tag": true,
+    "val_rouge1": 0.0023,
+    "val_rougeL": 0.0023,
+    "leaderboard_score": "TBD",
+    "notes": "More beams (8) + length penalty 1.5 \u2014 decoding optimisation"
+  }
+]
